@@ -35,20 +35,35 @@ const game = () => {
       for (let j = 0; j < sides; j++) {
         let x_coord = startx + j * offset,
           y_coord = starty + i * offset;
-        html += `
+        if (j % 3 === 0) {
+          html += `
 					<div class="dot" style="left:${x_coord - 5}px; top:${
-          y_coord - 5
-        }px" data-box="${point}"></div>	
+            y_coord - 5
+          }px" data-box="${point}"></div>	
 					<div class="box" box-id="${point}" style="left:${x_coord + 2.5}px; top:${
-          y_coord + 2.5
-        }px"></div>					
+            y_coord + 2.5
+          }px"></div>					
 					<div class="g-line h-line" box-num-l="${point}" box-num-t="${
-          point - sides
-        }" style="left:${x_coord}px; top:${y_coord}px" data-used="false"></div>
-					<div class="g-line v-line" box-num-l="${point}" box-num-t="${
-          point - 1
-        }" style="left:${x_coord}px; top:${y_coord}px" data-used="false"></div>
+            point - sides
+          }" style="left:${x_coord}px; top:${y_coord}px" data-used="false"></div>
+					<div class="g-line v-line" box-num-l="${-1}" box-num-t="${point}" style="left:${x_coord}px; top:${y_coord}px" data-used="false"></div>
 					`;
+        } else {
+          html += `
+					<div class="dot" style="left:${x_coord - 5}px; top:${
+            y_coord - 5
+          }px" data-box="${point}"></div>	
+					<div class="box" box-id="${point}" style="left:${x_coord + 2.5}px; top:${
+            y_coord + 2.5
+          }px"></div>					
+					<div class="g-line h-line" box-num-l="${point}" box-num-t="${
+            point - sides
+          }" style="left:${x_coord}px; top:${y_coord}px" data-used="false"></div>
+					<div class="g-line v-line" box-num-l="${point}" box-num-t="${
+            point - 1
+          }" style="left:${x_coord}px; top:${y_coord}px" data-used="false"></div>
+					`;
+        }
         boxes.push(0);
         point++;
       }
@@ -98,7 +113,6 @@ const clickLine = () => {
     .bind("click", function () {
       let line1 = parseInt($(this).attr("box-num-l"));
       let line2 = parseInt($(this).attr("box-num-t"));
-
       if (checkLine(this) && turn == 0) {
         let potential_side1 = false,
           potential_side2 = false;
@@ -183,7 +197,7 @@ const boxCompleted = async (id) => {
   //Licence as follows: "https://github.com/sweetalert2/sweetalert2/blob/main/LICENSE"
   if (done) {
     const inputOptions = ["Restart Game", "Look at Filled Board"];
-    if (p1 === p2 && p2 === p3) {
+    if ((p1 === p2 && p2 === p3) || p1 == p2 || p2 == p3) {
       const { value: option } = await Swal.fire({
         icon: "warning",
         title: "Game Over!",
@@ -221,7 +235,6 @@ const boxCompleted = async (id) => {
         },
       });
       if (option == 0) {
-        console.log("hello");
         restartGame();
       }
     }
