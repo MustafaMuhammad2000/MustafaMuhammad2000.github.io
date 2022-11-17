@@ -197,7 +197,12 @@ const boxCompleted = async (id) => {
   //Licence as follows: "https://github.com/sweetalert2/sweetalert2/blob/main/LICENSE"
   if (done) {
     const inputOptions = ["Restart Game", "Look at Filled Board"];
-    if ((p1 === p2 && p2 === p3) || p1 == p2 || p2 == p3) {
+    if (
+      (p1 === p2 && p2 === p3) ||
+      (p1 === p2 && p1 > p3) ||
+      (p2 === p3 && p2 > p1) ||
+      (p1 === p3 && p1 > p2)
+    ) {
       const { value: option } = await Swal.fire({
         icon: "warning",
         title: "Game Over!",
