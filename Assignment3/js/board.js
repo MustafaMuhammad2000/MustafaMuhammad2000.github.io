@@ -6,6 +6,15 @@ let turn = 0;
 
 // Creates the board with dots, horizontal lines, vertical lines and boxes.
 // Runs until game is finished, considered the main function of the program.
+const checkMobile = () => {
+  try {
+    document.createEvent("TouchEvent");
+    return true;
+  } catch (error) {
+    return false;
+  }
+};
+
 const game = () => {
   p1 = 0;
   p2 = 0;
@@ -16,6 +25,10 @@ const game = () => {
   const sides = 3;
   let height = window.innerHeight;
   let width = window.innerWidth;
+  if (checkMobile) {
+    height = window.outerHeight;
+    width = window.outerWidth;
+  }
 
   let offset = height * height * 0.00025 > 50 ? height * height * 0.00025 : 50;
 
@@ -268,6 +281,10 @@ const redraw = () => {
   let d = document.getElementById("container");
   let height = window.innerHeight;
   let width = window.innerWidth;
+  if (checkMobile) {
+    height = window.outerHeight;
+    width = window.outerWidth;
+  }
   var offset = height * height * 0.00025 > 50 ? height * height * 0.00025 : 50;
 
   const sides = 3;
