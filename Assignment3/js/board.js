@@ -25,7 +25,7 @@ const game = () => {
   const sides = 3;
   let height = window.innerHeight;
   let width = window.innerWidth;
-  if (checkMobile) {
+  if (checkMobile()) {
     height = window.outerHeight;
     width = window.outerWidth;
   }
@@ -281,7 +281,7 @@ const redraw = () => {
   let d = document.getElementById("container");
   let height = window.innerHeight;
   let width = window.innerWidth;
-  if (checkMobile) {
+  if (checkMobile()) {
     height = window.outerHeight;
     width = window.outerWidth;
   }
