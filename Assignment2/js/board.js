@@ -27,13 +27,13 @@ const game = () => {
   let height = window.innerHeight;
   let width = window.innerWidth;
   if (checkMobile()) {
-    height = screen.height * window.devicePixelRatio;
+    height = document.documentElement.clientHeight;
     console.log(window.devicePixelRatio);
     console.log(screen.height * window.devicePixelRatio);
     console.log(window.innerHeight);
     console.log(window.outerHeight);
-    console.log(document.documentElement.clientWidth);
-    width = window.screen.width;
+    console.log(document.documentElement.clientHeight);
+    width = document.documentElement.clientHeight;
   }
   const sides = 3;
   let offset = height * height * 0.00025 > 50 ? height * height * 0.00025 : 50;
