@@ -9,8 +9,10 @@ let turn = 0;
 
 const checkMobile = () => {
   if (typeof screen.orientation !== "undefined") {
+    console.log("mobile");
     return true;
   }
+  console.log("computer");
   return false;
 };
 
