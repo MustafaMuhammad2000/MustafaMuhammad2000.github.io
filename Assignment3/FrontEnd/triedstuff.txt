@@ -1,0 +1,47 @@
+// var divs = ["m1", "m2"];
+// function toggle(layer) {
+//   var d;
+//   for (var i = 0; i < divs.length; i += 1) {
+//     d = document.getElementById(divs[i]);
+//     d.style.display = "none";
+//   }
+//   d = document.getElementById(layer);
+//   d.style.display = "";
+// }
+
+// function hideMain() {
+//   let iframe = document.getElementById("mainframe");
+//   if (!iframe) {
+//     document.getElementById("page1").style.display = "none";
+//     return;
+//   }
+//   console.log(iframe);
+//   let innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+//   let iframestyles = innerDoc.getElementById("page1");
+//   iframestyles.style.display = "none";
+// }
+
+// function showSecond() {
+//   let iframe = document.getElementById("boardframe");
+//   if (!iframe) {
+//     document.getElementById("page2").style.display = "inline";
+//     return;
+//   }
+//   let innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+//   let iframestyles = innerDoc.getElementById("page2");
+//   iframestyles.style.display = "inline";
+// }
+
+// function hideSecond() {
+//   let iframe = document.getElementById("boardframe");
+//   let innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+//   let iframestyles = innerDoc.getElementById("page2");
+//   iframestyles.style.display = "none";
+// }
+
+// var form = innerdoc.getElementById("myForm");
+// function handleForm(event) {
+//   event.preventDefault();
+// }
+// form.addEventListener("submit", handleForm);
+
