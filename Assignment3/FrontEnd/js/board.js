@@ -92,10 +92,10 @@ socket.on("roomError", (data) => {
 // Socket event to inform users if a line has been added
 socket.on("addedLine", (data) => {
   boxes[data.id]++;
-  document.cookie = `boxes=${boxes}`;
   if (boxes[data.id] === 4) {
     boxCompleted(data.id);
   }
+  document.cookie = `boxes=${boxes}`;
 });
 // Sockent event to inform users if a line has been clicked
 socket.on("clickedLine", (data) => {
@@ -115,6 +115,13 @@ socket.on("getAllNames", (data) => {
   $(".p1").text(names[0] + " " + p1);
   $(".p2").text(names[1] + " " + p2);
   $(".p3").text(names[2] + " " + p3);
+  if (const_turn == 0) {
+    $(".p1").text("(You)" + names[0] + " " + p1);
+  } else if (const_turn == 1) {
+    $(".p2").text("(You)" + names[1] + " " + p2);
+  } else if (const_turn == 2) {
+    $(".p3").text("(You)" + names[2] + " " + p3);
+  }
   $(".currplayer").text("Current Player : " + names[turn]);
   document.cookie = `names=${names}`;
   document.cookie = `room_name=${room_name}`;
@@ -150,6 +157,14 @@ const game = () => {
   $(".p1").text(names[0] + " " + p1);
   $(".p2").text(names[1] + " " + p2);
   $(".p3").text(names[2] + " " + p3);
+
+  if (const_turn == 0) {
+    $(".p1").text("(You)" + names[0] + " " + p1);
+  } else if (const_turn == 1) {
+    $(".p2").text("(You)" + names[1] + " " + p2);
+  } else if (const_turn == 2) {
+    $(".p3").text("(You)" + names[2] + " " + p3);
+  }
   $(".currplayer").text("Current Player : " + names[turn]);
   p1 = 0;
   p2 = 0;
@@ -325,6 +340,13 @@ const boxCompleted = (id) => {
   $(".p1").text(names[0] + " " + p1);
   $(".p2").text(names[1] + " " + p2);
   $(".p3").text(names[2] + " " + p3);
+  if (const_turn == 0) {
+    $(".p1").text("(You)" + names[0] + " " + p1);
+  } else if (const_turn == 1) {
+    $(".p2").text("(You)" + names[1] + " " + p2);
+  } else if (const_turn == 2) {
+    $(".p3").text("(You)" + names[2] + " " + p3);
+  }
 
   let done = true;
   for (let i = 0; i < boxes.length; i++) {
@@ -531,7 +553,6 @@ const updateGameState = (lines, boxes) => {
     if (boxes[i].includes("complete")) {
       completedByPlayer = completedBy[i];
       completedByPlayer = Number(completedByPlayer);
-      console.log(completedByPlayer);
       if (completedByPlayer - 1 === 0) {
         color = "red";
         p1++;
@@ -546,6 +567,13 @@ const updateGameState = (lines, boxes) => {
       $(".p1").text(names[0] + " " + p1);
       $(".p2").text(names[1] + " " + p2);
       $(".p3").text(names[2] + " " + p3);
+      if (const_turn == 0) {
+        $(".p1").text("(You)" + names[0] + " " + p1);
+      } else if (const_turn == 1) {
+        $(".p2").text("(You)" + names[1] + " " + p2);
+      } else if (const_turn == 2) {
+        $(".p3").text("(You)" + names[2] + " " + p3);
+      }
     } else {
       done = false;
     }
