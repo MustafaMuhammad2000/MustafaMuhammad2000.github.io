@@ -116,11 +116,11 @@ socket.on("getAllNames", (data) => {
   $(".p2").text(names[1] + " : " + p2);
   $(".p3").text(names[2] + " : " + p3);
   if (const_turn == 0) {
-    $(".p1").text("(You) " + names[0] + " " + p1);
+    $(".p1").text("(You) " + names[0] + " : " + p1);
   } else if (const_turn == 1) {
-    $(".p2").text("(You) " + names[1] + " " + p2);
+    $(".p2").text("(You) " + names[1] + " : " + p2);
   } else if (const_turn == 2) {
-    $(".p3").text("(You) " + names[2] + " " + p3);
+    $(".p3").text("(You) " + names[2] + " : " + p3);
   }
   $(".currplayer").text("Current Player : " + names[turn]);
   document.cookie = `names=${names}`;
@@ -159,11 +159,11 @@ const game = () => {
   $(".p3").text(names[2] + " : " + p3);
 
   if (const_turn == 0) {
-    $(".p1").text("(You) " + names[0] + " " + p1);
+    $(".p1").text("(You) " + names[0] + " : " + p1);
   } else if (const_turn == 1) {
-    $(".p2").text("(You) " + names[1] + " " + p2);
+    $(".p2").text("(You) " + names[1] + " : " + p2);
   } else if (const_turn == 2) {
-    $(".p3").text("(You) " + names[2] + " " + p3);
+    $(".p3").text("(You) " + names[2] + " : " + p3);
   }
   $(".currplayer").text("Current Player : " + names[turn]);
   p1 = 0;
@@ -336,14 +336,14 @@ const boxCompleted = (id) => {
   boxes[id] = "complete";
 
   $(".p1").text(names[0] + " : " + p1);
-  $(".p2").text(names[1] + " :" + p2);
+  $(".p2").text(names[1] + " : " + p2);
   $(".p3").text(names[2] + " : " + p3);
   if (const_turn == 0) {
-    $(".p1").text("(You) " + names[0] + " " + p1);
+    $(".p1").text("(You) " + names[0] + " : " + p1);
   } else if (const_turn == 1) {
-    $(".p2").text("(You) " + names[1] + " " + p2);
+    $(".p2").text("(You) " + names[1] + " : " + p2);
   } else if (const_turn == 2) {
-    $(".p3").text("(You) " + names[2] + " " + p3);
+    $(".p3").text("(You) " + names[2] + " : " + p3);
   }
 
   let done = true;
@@ -566,11 +566,11 @@ const updateGameState = (lines, boxes) => {
       $(".p2").text(names[1] + " : " + p2);
       $(".p3").text(names[2] + " : " + p3);
       if (const_turn == 0) {
-        $(".p1").text("(You) " + names[0] + " " + p1);
+        $(".p1").text("(You) " + names[0] + " : " + p1);
       } else if (const_turn == 1) {
-        $(".p2").text("(You) " + names[1] + " " + p2);
+        $(".p2").text("(You) " + names[1] + " : " + p2);
       } else if (const_turn == 2) {
-        $(".p3").text("(You) " + names[2] + " " + p3);
+        $(".p3").text("(You) " + names[2] + " : " + p3);
       }
     } else {
       done = false;
