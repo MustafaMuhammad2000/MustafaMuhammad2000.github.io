@@ -272,7 +272,7 @@ const game = () => {
 const clickLine = () => {
   $("div.g-line")
     .unbind("click")
-    .bind("touchend", function () {
+    .bind("tap", function () {
       if (turn !== const_turn) {
         return;
       }
