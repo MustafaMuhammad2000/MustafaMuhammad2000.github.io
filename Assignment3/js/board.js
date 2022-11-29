@@ -284,6 +284,7 @@ const redraw = () => {
   if (checkMobile()) {
     height = window.outerHeight;
     width = window.outerWidth;
+    return;
   }
   var offset = height * height * 0.00025 > 50 ? height * height * 0.00025 : 50;
 
