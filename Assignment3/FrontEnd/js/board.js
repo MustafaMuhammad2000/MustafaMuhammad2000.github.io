@@ -264,7 +264,11 @@ const game = () => {
   }
   completedBy = boxes.slice();
   $("#game").html(html);
-  clickLine();
+  if (checkMobile()) {
+    tapLine();
+  } else {
+    clickLine();
+  }
 };
 
 //Whenever a line is clicked this function is fired.
@@ -308,8 +312,13 @@ const clickLine = () => {
         }
         document.cookie = `turn=${turn}`;
       }
-    })
-    .bind("tap", function () {
+    });
+};
+
+const tapLine = () => {
+  $("div.g-line")
+    .unbind("click")
+    .bind("touchend", function () {
       if (turn !== const_turn) {
         return;
       }
