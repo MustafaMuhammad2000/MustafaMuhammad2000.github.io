@@ -75,10 +75,8 @@ socket.on("joinedGame", (data) => {
       document.cookie = `turn=${turn}`;
       socket.emit("allNames", { room_name, names });
     }
-    const codeLink = document.getElementById("codeLink");
-    const numPlayers = document.getElementById("numOfPlayers");
-    codeLink.remove();
-    numPlayers.remove();
+    document.getElementById("codeLink").style.display = "block";
+    document.getElementById("numOfPlayers").style.display = "block";
     game();
   }
 });
@@ -274,7 +272,7 @@ const game = () => {
 const clickLine = () => {
   $("div.g-line")
     .unbind("click")
-    .bind("click", function () {
+    .bind("touchend", function () {
       if (turn !== const_turn) {
         return;
       }
@@ -378,6 +376,8 @@ const endGame = async () => {
       sessionStorage.clear();
       deleteAllCookies();
       socket.emit("endGame", { room_name });
+      document.getElementById("codeLink").style.display = "block";
+      document.getElementById("numOfPlayers").style.display = "block";
       toggler();
     }
   } else {
@@ -401,6 +401,8 @@ const endGame = async () => {
       sessionStorage.clear();
       deleteAllCookies();
       socket.emit("endGame", { room_name });
+      document.getElementById("codeLink").style.display = "block";
+      document.getElementById("numOfPlayers").style.display = "block";
       toggler();
     }
   }
