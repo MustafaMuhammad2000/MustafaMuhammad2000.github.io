@@ -28,11 +28,6 @@ const game = () => {
   let width = window.innerWidth;
   if (checkMobile()) {
     height = document.documentElement.clientHeight;
-    console.log(window.devicePixelRatio);
-    console.log(screen.height * window.devicePixelRatio);
-    console.log(window.innerHeight);
-    console.log(window.outerHeight);
-    console.log(document.documentElement.clientHeight);
     width = document.documentElement.clientWidth;
   }
   const sides = 3;
