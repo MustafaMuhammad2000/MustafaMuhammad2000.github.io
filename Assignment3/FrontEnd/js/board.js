@@ -75,8 +75,8 @@ socket.on("joinedGame", (data) => {
       document.cookie = `turn=${turn}`;
       socket.emit("allNames", { room_name, names });
     }
-    document.getElementById("codeLink").style.display = "block";
-    document.getElementById("numOfPlayers").style.display = "block";
+    document.getElementById("codeLink").style.display = "none";
+    document.getElementById("numOfPlayers").style.display = "none";
     game();
   }
 });
@@ -272,6 +272,43 @@ const game = () => {
 const clickLine = () => {
   $("div.g-line")
     .unbind("click")
+    .bind("click", function () {
+      if (turn !== const_turn) {
+        return;
+      }
+      let line1 = parseInt($(this).attr("box-num-l"));
+      let line2 = parseInt($(this).attr("box-num-t"));
+      let id = parseInt($(this).attr("id"));
+      if (checkLine(this)) {
+        let potential_side1 = false,
+          potential_side2 = false;
+        if (line1 >= 0) potential_side1 = addLine(line1);
+        if (line2 >= 0) potential_side2 = addLine(line2);
+        $(this).addClass("line-active");
+        $(this).attr("data-used", "true");
+
+        // Informs other users the line has been clicked.
+        socket.emit("clickLine", {
+          id,
+          room_name,
+          potential_side1,
+          potential_side2,
+          turn,
+        });
+        let lines = getCookie("lines");
+        lines += "|" + id;
+        document.cookie = `lines=${lines}`;
+
+        if (potential_side1 === false && potential_side2 === false) {
+          turn++;
+          if (turn >= 3) {
+            turn = 0;
+          }
+          $(".currplayer").text("Current Player : " + names[turn]);
+        }
+        document.cookie = `turn=${turn}`;
+      }
+    })
     .bind("tap", function () {
       if (turn !== const_turn) {
         return;
