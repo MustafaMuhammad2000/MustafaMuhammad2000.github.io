@@ -112,15 +112,15 @@ socket.on("clickedLine", (data) => {
 // Reports all usernames for 3 players in game
 socket.on("getAllNames", (data) => {
   names = data.names;
-  $(".p1").text(names[0] + " " + p1);
-  $(".p2").text(names[1] + " " + p2);
-  $(".p3").text(names[2] + " " + p3);
+  $(".p1").text(names[0] + " : " + p1);
+  $(".p2").text(names[1] + " : " + p2);
+  $(".p3").text(names[2] + " : " + p3);
   if (const_turn == 0) {
-    $(".p1").text("(You)" + names[0] + " " + p1);
+    $(".p1").text("(You) " + names[0] + " " + p1);
   } else if (const_turn == 1) {
-    $(".p2").text("(You)" + names[1] + " " + p2);
+    $(".p2").text("(You) " + names[1] + " " + p2);
   } else if (const_turn == 2) {
-    $(".p3").text("(You)" + names[2] + " " + p3);
+    $(".p3").text("(You) " + names[2] + " " + p3);
   }
   $(".currplayer").text("Current Player : " + names[turn]);
   document.cookie = `names=${names}`;
@@ -154,16 +154,16 @@ socket.on("enoughMembers", (data) => {
 
 // Draws game board
 const game = () => {
-  $(".p1").text(names[0] + " " + p1);
-  $(".p2").text(names[1] + " " + p2);
-  $(".p3").text(names[2] + " " + p3);
+  $(".p1").text(names[0] + " : " + p1);
+  $(".p2").text(names[1] + " : " + p2);
+  $(".p3").text(names[2] + " : " + p3);
 
   if (const_turn == 0) {
-    $(".p1").text("(You)" + names[0] + " " + p1);
+    $(".p1").text("(You) " + names[0] + " " + p1);
   } else if (const_turn == 1) {
-    $(".p2").text("(You)" + names[1] + " " + p2);
+    $(".p2").text("(You) " + names[1] + " " + p2);
   } else if (const_turn == 2) {
-    $(".p3").text("(You)" + names[2] + " " + p3);
+    $(".p3").text("(You) " + names[2] + " " + p3);
   }
   $(".currplayer").text("Current Player : " + names[turn]);
   p1 = 0;
@@ -276,9 +276,7 @@ const clickLine = () => {
   $("div.g-line")
     .unbind("click")
     .bind("click", function () {
-      console.log(turn + "----" + const_turn);
       if (turn !== const_turn) {
-        console.log("HI");
         return;
       }
       let line1 = parseInt($(this).attr("box-num-l"));
@@ -337,15 +335,15 @@ const boxCompleted = (id) => {
   $("div.box[box-id='" + id + "']").css("background-color", color);
   boxes[id] = "complete";
 
-  $(".p1").text(names[0] + " " + p1);
-  $(".p2").text(names[1] + " " + p2);
-  $(".p3").text(names[2] + " " + p3);
+  $(".p1").text(names[0] + " : " + p1);
+  $(".p2").text(names[1] + " :" + p2);
+  $(".p3").text(names[2] + " : " + p3);
   if (const_turn == 0) {
-    $(".p1").text("(You)" + names[0] + " " + p1);
+    $(".p1").text("(You) " + names[0] + " " + p1);
   } else if (const_turn == 1) {
-    $(".p2").text("(You)" + names[1] + " " + p2);
+    $(".p2").text("(You) " + names[1] + " " + p2);
   } else if (const_turn == 2) {
-    $(".p3").text("(You)" + names[2] + " " + p3);
+    $(".p3").text("(You) " + names[2] + " " + p3);
   }
 
   let done = true;
@@ -564,15 +562,15 @@ const updateGameState = (lines, boxes) => {
         p3++;
       }
       $("div.box[box-id='" + i + "']").css("background-color", color);
-      $(".p1").text(names[0] + " " + p1);
-      $(".p2").text(names[1] + " " + p2);
-      $(".p3").text(names[2] + " " + p3);
+      $(".p1").text(names[0] + " : " + p1);
+      $(".p2").text(names[1] + " : " + p2);
+      $(".p3").text(names[2] + " : " + p3);
       if (const_turn == 0) {
-        $(".p1").text("(You)" + names[0] + " " + p1);
+        $(".p1").text("(You) " + names[0] + " " + p1);
       } else if (const_turn == 1) {
-        $(".p2").text("(You)" + names[1] + " " + p2);
+        $(".p2").text("(You) " + names[1] + " " + p2);
       } else if (const_turn == 2) {
-        $(".p3").text("(You)" + names[2] + " " + p3);
+        $(".p3").text("(You) " + names[2] + " " + p3);
       }
     } else {
       done = false;
