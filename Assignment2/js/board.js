@@ -24,11 +24,11 @@ const game = () => {
   boxes = [];
   turn = 0;
 
-  let height = window.innerheight;
-  let width = window.innerwidth;
+  let height = window.innerHeight;
+  let width = window.innerWidth;
   if (checkMobile()) {
-    height = window.outerHeight;
-    width = window.outerWidth;
+    height = window.screen.height;
+    width = window.screen.width;
   }
   const sides = 3;
   let offset = height * height * 0.00025 > 50 ? height * height * 0.00025 : 50;
@@ -281,11 +281,11 @@ const checkLine = (line) => {
 const redraw = () => {
   let d = document.getElementById("container");
 
-  let height = window.innerheight;
-  let width = window.innerwidth;
+  let height = window.innerHeight;
+  let width = window.innerWidth;
   if (checkMobile()) {
-    height = window.outerHeight;
-    width = window.outerWidth;
+    height = window.screen.height;
+    width = window.screen.width;
   }
   var offset = height * height * 0.00025 > 50 ? height * height * 0.00025 : 50;
 
