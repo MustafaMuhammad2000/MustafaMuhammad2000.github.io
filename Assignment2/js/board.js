@@ -8,12 +8,13 @@ let turn = 0;
 // Runs until game is finished, considered the main function of the program.
 
 const checkMobile = () => {
-  if (typeof screen.orientation !== "undefined") {
+  if ("ontouchstart" in document.documentElement) {
     console.log("mobile");
     return true;
+  } else {
+    console.log("computer");
+    return false;
   }
-  console.log("computer");
-  return false;
 };
 
 const game = () => {
