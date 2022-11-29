@@ -265,8 +265,10 @@ const game = () => {
   completedBy = boxes.slice();
   $("#game").html(html);
   if (checkMobile()) {
+    console.log("mobile");
     tapLine();
   } else {
+    console.log("not mobile");
     clickLine();
   }
 };
