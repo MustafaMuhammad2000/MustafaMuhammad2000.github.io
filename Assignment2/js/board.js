@@ -33,7 +33,7 @@ const game = () => {
     console.log(window.innerHeight);
     console.log(window.outerHeight);
     console.log(document.documentElement.clientHeight);
-    width = document.documentElement.clientHeight;
+    width = document.documentElement.clientWidth;
   }
   const sides = 3;
   let offset = height * height * 0.00025 > 50 ? height * height * 0.00025 : 50;
