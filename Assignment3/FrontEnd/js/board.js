@@ -34,9 +34,11 @@ const deleteAllCookies = () => {
 // Checks to see if game is being played on mobile device
 const checkMobile = () => {
   try {
+    console.log("Mobile");
     document.createEvent("TouchEvent");
     return true;
   } catch (error) {
+    console.log("Not");
     return false;
   }
 };
@@ -176,8 +178,8 @@ const game = () => {
   let height = window.innerHeight;
   let width = window.innerWidth;
   if (checkMobile()) {
-    height = window.screen.width;
-    width = window.screen.height;
+    height = window.outerHeight;
+    width = window.outerWidth;
   }
 
   let offset = height * height * 0.00025 > 50 ? height * height * 0.00025 : 50;
@@ -434,8 +436,8 @@ const redraw = () => {
   let height = window.innerHeight;
   let width = window.innerWidth;
   if (checkMobile()) {
-    height = window.outerHeight;
-    width = window.outerWidth;
+    height = window.screen.height;
+    width = window.screen.width;
   }
   var offset = height * height * 0.00025 > 50 ? height * height * 0.00025 : 50;
 
