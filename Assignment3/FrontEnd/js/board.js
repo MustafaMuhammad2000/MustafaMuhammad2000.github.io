@@ -637,9 +637,8 @@ setInterval(async function () {
     await Swal.fire({
       icon: "error",
       title: "Not enough players",
-      confirmButtonText: "Exit",
       text: "A player has disconnected, the game will resume when they reconnect. Alternatively you can exit the game. This will cause all other players to exit as well!",
-      confirmButtonText: 'Yes <i class="fa fa-arrow-right"></i>',
+      confirmButtonText: 'Exit <i class="fa fa-arrow-right"></i>',
       allowOutsideClick: false,
     }).then((result) => {
       if (result.isConfirmed) {
