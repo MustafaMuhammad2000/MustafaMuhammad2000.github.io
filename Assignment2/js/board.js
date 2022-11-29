@@ -27,7 +27,7 @@ const game = () => {
   let height = window.innerHeight;
   let width = window.innerWidth;
   if (checkMobile()) {
-    height = window.screen.height;
+    height = screen.height * window.devicePixelRatio;
     width = window.screen.width;
   }
   const sides = 3;
