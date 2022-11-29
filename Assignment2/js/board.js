@@ -23,8 +23,8 @@ const game = () => {
   boxes = [];
   turn = 0;
 
-  let height = height;
-  let width = width;
+  let height = window.innerheight;
+  let width = window.innerwidth;
   if (checkMobile()) {
     height = window.outerHeight;
     width = window.outerWidth;
@@ -280,8 +280,8 @@ const checkLine = (line) => {
 const redraw = () => {
   let d = document.getElementById("container");
 
-  let height = height;
-  let width = width;
+  let height = window.innerheight;
+  let width = window.innerwidth;
   if (checkMobile()) {
     height = window.outerHeight;
     width = window.outerWidth;
