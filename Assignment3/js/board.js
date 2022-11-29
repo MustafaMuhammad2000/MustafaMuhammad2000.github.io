@@ -25,10 +25,10 @@ const game = () => {
   const sides = 3;
   let height = window.innerHeight;
   let width = window.innerWidth;
-  // if (checkMobile()) {
-  //   height = window.outerHeight;
-  //   width = window.outerWidth;
-  // }
+  if (checkMobile()) {
+    height = window.outerHeight;
+    width = window.outerWidth;
+  }
 
   let offset = height * height * 0.00025 > 50 ? height * height * 0.00025 : 50;
 
