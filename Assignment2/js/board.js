@@ -6,6 +6,14 @@ let turn = 0;
 
 // Creates the board with dots, horizontal lines, vertical lines and boxes.
 // Runs until game is finished, considered the main function of the program.
+
+const checkMobile = () => {
+  if (typeof screen.orientation !== "undefined") {
+    return true;
+  }
+  return false;
+};
+
 const game = () => {
   p1 = 0;
   p2 = 0;
@@ -13,19 +21,22 @@ const game = () => {
   boxes = [];
   turn = 0;
 
+  let height = height;
+  let width = width;
+  if (checkMobile()) {
+    height = window.outerHeight;
+    width = window.outerWidth;
+  }
   const sides = 3;
-  let offset =
-    window.innerHeight * window.innerHeight * 0.00025 > 50
-      ? window.innerHeight * window.innerHeight * 0.00025
-      : 50;
+  let offset = height * height * 0.00025 > 50 ? height * height * 0.00025 : 50;
 
   document.documentElement.style.setProperty("--w", offset);
   document.documentElement.style.setProperty("--h", offset);
 
   // Uses window size to dynamically render board size
-  let startx = window.innerWidth / 2 - (sides * offset) / 2,
+  let startx = width / 2 - (sides * offset) / 2,
     starty =
-      window.innerHeight / 8 +
+      height / 8 +
       (window.scrollY +
         document.querySelector(".currplayer").getBoundingClientRect().top);
   let html = `<div id="container">`;
@@ -266,15 +277,19 @@ const checkLine = (line) => {
 // Re-renders board dynamically if window size has been changed by changing coordinates of dots.
 const redraw = () => {
   let d = document.getElementById("container");
-  var offset =
-    window.innerHeight * window.innerHeight * 0.00025 > 50
-      ? window.innerHeight * window.innerHeight * 0.00025
-      : 50;
+
+  let height = height;
+  let width = width;
+  if (checkMobile()) {
+    height = window.outerHeight;
+    width = window.outerWidth;
+  }
+  var offset = height * height * 0.00025 > 50 ? height * height * 0.00025 : 50;
 
   const sides = 3;
-  let startx = window.innerWidth / 2 - (sides * offset) / 2,
+  let startx = width / 2 - (sides * offset) / 2,
     starty =
-      window.innerHeight / 8 +
+      height / 8 +
       (window.scrollY +
         document.querySelector(".currplayer").getBoundingClientRect().top);
   document.documentElement.style.setProperty("--w", offset);

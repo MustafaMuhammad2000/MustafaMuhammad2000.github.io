@@ -33,14 +33,10 @@ const deleteAllCookies = () => {
 
 // Checks to see if game is being played on mobile device
 const checkMobile = () => {
-  try {
-    console.log("Mobile");
-    document.createEvent("TouchEvent");
+  if (typeof screen.orientation !== "undefined") {
     return true;
-  } catch (error) {
-    console.log("Not");
-    return false;
   }
+  return false;
 };
 
 // Socket portion
